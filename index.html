@@ -95,63 +95,57 @@
   }
 
   .input-group {
-  text-align: left;
-  margin-top: 15px;
-}
-
-.input-group label {
-  font-size: 14px;
-  color: #ff4d6d;
-  font-weight: 600;
-  display: block;
-  margin-bottom: 5px;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 12px;
-  border: 1px solid #ddd;
-  background: #fff7f9;
-  font-size: 14px;
-}
-
-/* RESPONSIVE ANDROID */
-@media (max-width: 480px) {
-  body {
-    padding: 15px;
-    align-items: flex-start;
-  }
-
-  .card {
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 18px;
-  }
-
-  h2 {
-    font-size: 22px;
-  }
-
-  p {
-    font-size: 16px;
-  }
-
-  button {
-    font-size: 16px;
-    padding: 14px;
-  }
-
-  input {
-    font-size: 16px;
-    padding: 12px;
+    text-align: left;
+    margin-top: 15px;
   }
 
   .input-group label {
-    font-size: 15px;
+    font-size: 14px;
+    color: #ff4d6d;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
   }
-}
 
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    background: #fff7f9;
+    font-size: 14px;
+  }
+
+  .valentine-btn-group {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+  }
+
+  .valentine-btn-group button {
+    width: 140px;
+  }
+
+  .no-btn {
+    position: absolute;
+    right: 0;
+  }
+
+
+  /* RESPONSIVE ANDROID */
+  @media (max-width: 480px) {
+    body {
+      padding: 20px 15px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      margin: auto;
+    }
+  }
 </style>
 </head>
 <body>
@@ -165,53 +159,58 @@
     <button onclick="mulaiApp()">Klik Aku 💖</button>
   </div>
 
-    <!-- LOVE MATCH -->
-    <div id="formCinta" class="hidden">
-        <h2>💘 Love Match 💘</h2>
-    
-        <div class="input-group">
-        <label>👤 Tanggal lahir aku</label>
-        <input type="date" id="tglSaya" placeholder="Masukkan tanggal lahir aku">
-        </div>
-    
-        <div class="input-group">
-        <label>💑 Tanggal lahir pasanganmu</label>
-        <input type="date" id="tglPasangan" placeholder="Masukkan tanggal lahir kamu">
-        </div>
-    
-        <button onclick="hitungCinta()">Hitung Kecocokan ❤️</button>
+  <!-- LOVE MATCH -->
+  <div id="formCinta" class="hidden">
+    <h2>💘 Love Match 💘</h2>
+    <div class="input-group">
+      <label>👤 Tanggal lahir aku</label>
+      <input type="date" id="tglSaya">
     </div>
-  
-  
+    <div class="input-group">
+      <label>💑 Tanggal lahir pasanganmu</label>
+      <input type="date" id="tglPasangan">
+    </div>
+    <button onclick="hitungCinta()">Hitung Kecocokan ❤️</button>
+  </div>
 
   <div id="hasilCinta" class="hidden">
     <div class="heart">❤️</div>
     <h2 id="percent">0%</h2>
   </div>
 
-  <!-- QUIZ MAKANAN (BUTTON) -->
+  <!-- QUIZ MAKANAN -->
   <div id="quizMakanan" class="hidden">
     <h2>🍜 Quiz Cinta 🍕</h2>
     <p>Apa makanan yang sering kita makan? 😋</p>
-
     <button class="option-btn" onclick="cekJawabanMakanan('gembus')">A. Ayam Pa Gembus</button>
     <button class="option-btn" onclick="cekJawabanMakanan('warungss')">B. Waroeng SS</button>
     <button class="option-btn" onclick="cekJawabanMakanan('mendoan')">C. Mendoan Menara Teratai</button>
-  </div>  
+  </div>
 
   <!-- QUIZ JADIAN -->
   <div id="quizJadian" class="hidden">
     <h2>💞 Quiz Kenangan 💞</h2>
     <p>Kapan tanggal jadian kita? 🥺</p>
-    <input type="date" id="tanggalJadian" placeholder="Masukkan tanggal jadian kita">
+    <input type="date" id="tanggalJadian">
     <button onclick="cekTanggalJadian()">Jawab ❤️</button>
   </div>
 
-<!-- GALERI -->
-<div id="galeriMomen" class="hidden">
+  <!-- HALAMAN VALENTINE -->
+  <div id="halentinePage" class="hidden">
+    <h2>💖 Mau Jadi Valentine-ku? 💖</h2>
+    <p>Janji bakal aku sayang terus 🥺❤️</p>
+
+    <div class="valentine-btn-group">
+      <button class="yes-btn" onclick="terimaCinta()">YES 💕</button>
+      <button id="btnNo" class="no-btn">NO 😝</button>
+    </div>
+  </div>
+
+  <!-- GALERI -->
+  <div id="galeriMomen" class="hidden">
     <h2>📸 Momen Kita 💕</h2>
     <div class="slideshow">
-  
+
       <!-- SLIDE UCAPAN PEMBUKA -->
       <div class="slide active">
         <div style="padding:40px 20px;">
@@ -224,9 +223,15 @@
           </p>
         </div>
       </div>
-  
-      <!-- FOTO 1 -->
+
+      <!-- FOTO 0 -->
       <div class="slide">
+        <img src="makan.jpeg">
+        <div class="caption">Pertama kali kita ketemu, masih canggung 🥰</div>
+      </div>
+
+       <!-- FOTO 1 -->
+       <div class="slide">
         <img src="malam_minggu.jpg">
         <div class="caption">Pertama kali kita malam mingguan 🥰</div>
       </div>
@@ -254,11 +259,9 @@
         <img src="foto2.jpg">
         <div class="caption">Kenangan yang selalu aku simpan 💖</div>
       </div>
-  
     </div>
-  
     <p><strong>Happy Valentine Sayang ❤️</strong></p>
-  </div>  
+  </div>
 
 </div>
 
@@ -268,11 +271,13 @@ const formCinta = document.getElementById("formCinta");
 const hasilCinta = document.getElementById("hasilCinta");
 const quizMakanan = document.getElementById("quizMakanan");
 const quizJadian = document.getElementById("quizJadian");
+const halentinePage = document.getElementById("halentinePage");
 const galeriMomen = document.getElementById("galeriMomen");
 const percent = document.getElementById("percent");
 const tglSaya = document.getElementById("tglSaya");
 const tglPasangan = document.getElementById("tglPasangan");
 const tanggalJadian = document.getElementById("tanggalJadian");
+const btnNo = document.getElementById("btnNo");
 
 function mulaiApp() {
   halamanAwal.classList.add("hidden");
@@ -285,6 +290,50 @@ function hitungCinta() {
     return;
   }
 
+  const today = new Date();
+  const tglSayaDate = new Date(tglSaya.value);
+  const tglPasanganDate = new Date(tglPasangan.value);
+
+  // ❌ Tidak boleh tanggal masa depan
+  if (tglSayaDate > today) {
+    alert("😳 Kamu dari masa depan ya? Isi tanggal lahir yang bener dong sayang ❤️");
+    return;
+  }
+
+  if (tglPasanganDate > today) {
+    alert("😝 Masa tanggal lahir pasangan di masa depan? Coba cek lagi ya 💕");
+    return;
+  }
+
+  // 🎂 Hitung umur
+  const umurSaya = today.getFullYear() - tglSayaDate.getFullYear();
+  const umurPasangan = today.getFullYear() - tglPasanganDate.getFullYear();
+
+  if (umurSaya < 10) {
+    alert("😅 Kamu masih bocil dong? ga valid ah 😆");
+    return;
+  }
+
+  if (umurPasangan < 10) {
+    alert("😂 Masa pasangan masih kecil banget sih? isi yang bener ya 💖");
+    return;
+  }
+
+  // 💘 VALIDASI KHUSUS TANGGAL KALIAN
+  if (tglSaya.value !== "2004-09-19") {
+    alert("🤨 Hmm... masa tanggal lahir kamu aku ga hafal sih? coba inget lagi 😏");
+    return;
+  }
+
+  if (tglPasangan.value !== "2003-01-18") {
+    alert("😤 Ih salah! berarti bukan kamu dong orangnya 😝");
+    return;
+  }
+
+  // 💖 Kalau dua-duanya benar
+  alert("😍 Yeyy tanggalnya cocok! berarti kamu memang jodohku 💞");
+
+  // ✅ Lolos validasi lanjut hitung cinta
   formCinta.classList.add("hidden");
   hasilCinta.classList.remove("hidden");
 
@@ -303,41 +352,46 @@ function hitungCinta() {
   }, 30);
 }
 
+
+
 function cekJawabanMakanan(jawaban) {
-  const benar = "gembus"; // ganti sesuai favorit pasangan
-
-  alert(jawaban === benar
-    ? "😍 Yeyy bener! Masuk surga untuk yang bikin sambal pa gembus ❤️"
-    : "😝 Yah salah... tapi tetap aku sayang kok 💕");
-
   quizMakanan.classList.add("hidden");
   quizJadian.classList.remove("hidden");
 }
 
 function cekTanggalJadian() {
-  const tanggalBenar = "2026-02-02"; // ganti tanggal jadian
+  const tanggalBenar = "2026-02-02";
   if (tanggalJadian.value === tanggalBenar) {
-    alert("💖 Yeayyyyy Kamu inget! Ini momen-momen kita 🥺");
     quizJadian.classList.add("hidden");
-    galeriMomen.classList.remove("hidden");
-    startSlideshow();
+    halentinePage.classList.remove("hidden");
   } else {
-    alert("😢 Masa lupa sih... coba inget lagi ya sayang ❤️");
+    alert("😢 Masa lupa sih...");
   }
 }
+
+function terimaCinta() {
+  halentinePage.classList.add("hidden");
+  galeriMomen.classList.remove("hidden");
+  startSlideshow();
+}
+
+btnNo.addEventListener("mouseover", () => {
+  const x = Math.random() * 200;
+  const y = Math.random() * 60;
+  btnNo.style.left = x + "px";
+  btnNo.style.top = y + "px";
+});
 
 let slideIndex = 0;
 function startSlideshow() {
   const slides = document.querySelectorAll(".slide");
-
-  // tampilkan ucapan dulu selama 3 detik
   setTimeout(() => {
     setInterval(() => {
       slides[slideIndex].classList.remove("active");
       slideIndex = (slideIndex + 1) % slides.length;
       slides[slideIndex].classList.add("active");
-    }, 5000); // delay antar foto 5 detik
-  }, 3000); // ucapan pembuka tampil 3 detik
+    }, 5000);
+  }, 3000);
 }
 </script>
 
